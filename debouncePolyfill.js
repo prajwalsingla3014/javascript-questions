@@ -8,23 +8,23 @@
 
 // PolyFill for debounce function
 
-const myDebounce = (callback,delay) => {
-    let timerId;
-    return function(...args) {
-        if(timerId) {
-            clearTimeout(timerId)
-        }
-        timerId = setTimeout(() => {
-            callback(...args)
-        },delay)
+const myDebounce = (callback, delay) => {
+  let timerId;
+  return function (...args) {
+    if (timerId) {
+      clearTimeout(timerId);
     }
-}
+    timerId = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+};
 
-let startTime = Date.now()
+let startTime = Date.now();
 
 const fetchData = () => {
-    console.log(`fetchData called after ${Date.now() - startTime}ms`)
-}
+  console.log(`fetchData called after ${Date.now() - startTime}ms`);
+};
 
-const debouncedFunc = myDebounce(fetchData,50)
-debouncedFunc()
+const debouncedFunc = myDebounce(fetchData, 50);
+debouncedFunc();
