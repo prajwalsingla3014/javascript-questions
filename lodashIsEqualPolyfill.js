@@ -19,6 +19,10 @@ function deepEqual(a, b) {
     return false;
   }
 
+  if (Array.isArray(a) !== Array.isArray(b)) {
+    return false;
+  }
+
   const keysA = Object.keys(a);
   const keysB = Object.keys(b);
   if (keysA.length !== keysB.length) {
@@ -32,7 +36,7 @@ function deepEqual(a, b) {
     const valueA = a[key];
     const valueB = b[key];
     const isObjects = isObject(valueA) && isObject(valueB);
-    if (value1 instanceof Date && value2 instanceof Date) {
+    if (valueA instanceof Date && valueB instanceof Date) {
       if (value1.getTime() != value2.getTime()) {
         return false;
       }
@@ -65,3 +69,4 @@ console.log(deepEqual(obj1, obj2));
 const obj3 = { a: 1, b: [1, [2, [3, { c: 4 }]]], c: 4 };
 const obj4 = { a: 1, b: [1, [2, [3, { c: 4 }]]], c: 4 };
 console.log(deepEqual(obj3, obj4));
+console.log(deepEqual({}, []));
