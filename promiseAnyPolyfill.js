@@ -45,5 +45,5 @@ const promise1 = Promise.myAny([
 ]);
 
 promise1
-  .then((value) => console.log("Rejected with ", value))
+  .then((value) => console.log("Resolved with ", value))
   .catch((err) => console.log("Rejected with ", err));
